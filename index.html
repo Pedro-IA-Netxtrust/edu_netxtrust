@@ -9,7 +9,6 @@
   <meta property="og:title" content="NetxTrust - Transforma tus documentos con IA" />
   <meta property="og:description" content="Sube tu PDF y obtén resúmenes ejecutivos, análisis profundo o materiales educativos generados por IA." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://tu-usuario.github.io/netxtrust/" />
   
   <title>NetxTrust - Transforma tus documentos con IA</title>
   
@@ -91,7 +90,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <!-- Síntesis -->
           <label class="card glass p-8 cursor-pointer" id="card-sintesis">
-            <input type="radio" name="strategy" value="sintesis" class="sr-only" required aria-describedby="desc-sintesis">
+            <input type="radio" name="strategy" value="sintesis" class="sr-only" required>
             <div class="text-center">
               <div class="w-16 h-16 bg-cyan-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                 <svg class="h-8 w-8 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -99,7 +98,7 @@
                 </svg>
               </div>
               <h3 class="font-bold text-xl mb-3">Síntesis y Análisis</h3>
-              <p id="desc-sintesis" class="text-sm text-slate-400">Resúmenes claros y concisos con enfoque en lo esencial</p>
+              <p class="text-sm text-slate-400">Resúmenes claros y concisos con enfoque en lo esencial</p>
             </div>
           </label>
 
@@ -345,7 +344,7 @@
       formData.append('metadata', JSON.stringify(metadata));
 
       try {
-        const response = await fetch('https://tu-instancia.n8n.cloud/webhook/tu-id', {
+        const response = await fetch('https://n8n.srv1020196.hstgr.cloud/webhook-test/bffba0ed-57d6-4bfb-8aea-6cc9c2c5c087', {
           method: 'POST',
           body: formData
         });
@@ -361,7 +360,8 @@
           throw new Error('Error del servidor');
         }
       } catch (err) {
-        showError('Error al enviar el documento. Inténtalo de nuevo.');
+        console.error(err);
+        showError('Error al enviar el documento. Verifica tu conexión o inténtalo más tarde.');
       } finally {
         btn.disabled = false;
         btnText.textContent = 'Generar Material Estratégico';
